@@ -1,44 +1,37 @@
-* -----------SINGLE FILE FRAMEWORK-------------
-* A single file to handle all files asbed on URL
-* written by Richard Testani
-* http://www.richtestani.com
-* @sandman25
-* version 0.5.5
-* July 2014
+SFF: Single File Framework
+--------------------------
 
-* ============== MANUAL =======================
-* Upload this file, the .htaccess and the folders.
-* Inside the files directory is php file.
-* This is your template. Edit this as you please.
-* Go to yourdomain.com/ to see it.
-* 
-* With SFF you can add any page by placing
-* php files in the files folder and load it via:
-* yourdomain.com/my-page
-*
-* ---- URL Params ------------------------------
-* You can pass in page params like:
-* yourdomain.com/page-name/param/value
-* Params are handled in pairs, so you
-* should build your URLs accordingly.
-*
-* ---- Plugins ---------------------------------
-* These are really basic includes, but lets you
-* add in whatever functionality you want.
-* Write your own functions which are callable
-* in your pages. Simple drop a PHP file in
-* the plugins folder, and go.
-*
-* ---- Config ----------------------------------
-* You can supply your own site configurations
-* by adding a php file to the config folder
-* your file should consist soley of a
-* multi-dimentional array named $config
-* example:
-* $config['page_title'] = 'My Site';
-* $config['title'] = 'My Title';
-* each key is available as a
-* variable as its name:
-* echo $title;
-*
-*/
+To be fair it takes more like 3 files to make this work,
+but most of the work is done in a single file,
+and three file framework doesn't sound as
+interesting.
+
+What is SFF?
+It's a simple site structure which helps
+web developers quickly setup a website
+based on either static text or dynamic.
+
+The idea was based on a small problem
+of having to get a handful of static
+HTML files pulled together in a more
+managable way and that helped me
+provide a better URL structure for
+the site.
+
+The framework builds the pages based on the current URL
+with a few extras sprinkled about such as URL rewriting,
+routing and automatic including of files. SFF has
+such a thing called plugins which are basically
+any third party files you want to include in a project.
+
+SFF also supports your own configuration files
+and also loads them automatically.
+
+I wanted to make the framekwork easy enough for
+anyone with any level of experience to use it
+and build on it anyway they want.
+
+Documentaiton and better routing support
+coming soon.
+
+Rich
