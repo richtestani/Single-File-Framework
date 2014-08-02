@@ -147,20 +147,24 @@ a:hover {
 	margin: 0 auto;
 }
 
-.bp-icon-next:after {
-	content: "\e000";
+.container > header nav a.sff-docs-nav {
+	background: url(/assets/images/docs.png) center center no-repeat;
+	background-color: silver;
 }
-.bp-icon-drop:after {
-	content: "\e001";
+
+.container > header nav a.sff-tuts-nav {
+	background: url(/assets/images/tutorial.png) center center no-repeat;
+	background-color: silver;
 }
-.bp-icon-archive:after {
-	content: "\e002";
+
+.container > header nav a.sff-download-nav {
+	background: url(/assets/images/download.png) center center no-repeat;
+	background-color: silver;
 }
-.bp-icon-about:after {
-	content: "\e003";
-}
-.bp-icon-prev:after {
-	content: "\e004";
+
+.container > header nav a.sff-about-nav {
+	background: url(/assets/images/about.png) center center no-repeat;
+	background-color: silver;
 }
 
 @media screen and (max-width: 55em) {

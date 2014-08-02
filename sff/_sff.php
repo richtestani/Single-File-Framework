@@ -52,6 +52,7 @@ function load_file( $filename, $filesdir, $config )
     ob_start();
     
     extract( $config );
+    extract( $site['params'] );
     
     if( file_exists( $filepath) )
     {
@@ -81,7 +82,7 @@ function load_file( $filename, $filesdir, $config )
 function render( $file, $config )
 {
     extract( $config );
-    
+
     $file = load_file( $file, $site['filesdir'], $config );
 
     echo $file;
@@ -127,4 +128,17 @@ function dir_list( $dir, $private = true, $recursive = true, $exclude = array() 
             }
 	}
 	return array_merge(array(), $dir);
+}
+
+function get_config_item($item, $config, $key = '')
+{
+    if( ! empty( $key ) )
+    {
+        return $config[$key][$item];
+    }
+    else
+    {
+        return $config[$item];
+    }
+    
 }
