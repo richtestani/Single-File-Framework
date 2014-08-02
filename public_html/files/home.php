@@ -43,7 +43,7 @@
                         <p>SFF was designed for anyone to use, for those who have zero coding skills but know how to put together an awesome site, or a skilled PHP master who needs to build a web application from a simple and sounds architecture. Hello SFF.</p>
                     </article>
                     <figure class="cbp-so-side cbp-so-side-right">
-                        <img src="/assets/fonts/flaticons/png/emoticon.png" alt="img01">
+                        <img src="/assets/images/emoticon.png" alt="img01">
                     </figure>
                 </section>
                 <section class="cbp-so-section">
@@ -52,12 +52,12 @@
                         <p>There is no MySQL or PostgreSQL requirement here. Put away the mysqli functions for now until it's a requirement.</p>
                     </article>
                     <figure class="cbp-so-side cbp-so-side-right">
-                        <img src="/assets/fonts/flaticons/png/database13.png" alt="img01">
+                        <img src="/assets/images/database13.png" alt="img01">
                     </figure>
                 </section>
                 <section class="cbp-so-section">
                     <figure class="cbp-so-side cbp-so-side-left">
-                        <img src="/assets/fonts/flaticons/png/domain.png" alt="img01">
+                        <img src="/assets/images/domain.png" alt="img01">
                     </figure>
                     <article class="cbp-so-side cbp-so-side-right">
                         <h2>Simple Routing</h2>
@@ -70,12 +70,12 @@
                         <p>You don't need to know a lick of PHP to use SFF. You barely need know HTML.</p>
                     </article>
                     <figure class="cbp-so-side cbp-so-side-right">
-                        <img src="/assets/fonts/flaticons/png/html-tag.png" alt="img01">
+                        <img src="/assets/images/html-tag.png" alt="img01">
                     </figure>
                 </section>
                 <section class="cbp-so-section">
                     <figure class="cbp-so-side cbp-so-side-left">
-                        <img src="/assets/fonts/flaticons/png/clean1.png" alt="img01">
+                        <img src="/assets/images/clean1.png" alt="img01">
                     </figure>
                     <article class="cbp-so-side cbp-so-side-right">
                         <h2>Modern</h2>
@@ -84,7 +84,7 @@
                 </section>
                 <section class="cbp-so-section">
                     <figure class="cbp-so-side cbp-so-side-left">
-                        <img src="/assets/fonts/flaticons/png/website3.png" alt="img01">
+                        <img src="/assets/images/website3.png" alt="img01">
                     </figure>
                     <article class="cbp-so-side cbp-so-side-right">
                         <h2>Not an MVC</h2>
