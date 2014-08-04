@@ -44,7 +44,7 @@ function build_params( $params )
 * Load the Controlling File
 *
 ****************************/
-function load_file( $filename, $filesdir, $config )
+function load_file( $filename, $filesdir, $config, $override = false )
 {
     
     $filepath = PUBPATH . DS . $filesdir . DS . $filename . '.' . EXT;
@@ -54,7 +54,7 @@ function load_file( $filename, $filesdir, $config )
     extract( $config );
     extract( $site['params'] );
     
-    if( file_exists( $filepath) )
+    if( ( file_exists( $filepath) AND strpos($filename, '_') !== 0 ) OR ( file_exists( $filepath) AND $override ) )
     {
         require_once $filepath;
     }
@@ -82,8 +82,18 @@ function load_file( $filename, $filesdir, $config )
 function render( $file, $config )
 {
     extract( $config );
+    
+    $override = false;
+    
+    /*
+     * check for ajax call, if so allow file loading
+     */
+    if ( !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' )
+    {
+            $override = true;
+    }
 
-    $file = load_file( $file, $site['filesdir'], $config );
+    $file = load_file( $file, $site['filesdir'], $config, $override );
 
     echo $file;
     
@@ -98,9 +108,14 @@ function load_plugins( $plugins, $pluginsdir, $exclude = array() )
 {
     foreach($plugins as $p)
     {
+	    
         if( ! in_array($p, $exclude) AND ! is_dir( realpath('./'.$pluginsdir.DS).DS.$p ) AND ! in_array( $exclude ) )
         {
-            include( realpath('./'.$pluginsdir.DS).DS.$p );
+	        if( file_exists( realpath('../') . DS . $pluginsdir. DS . $p ) )
+	        {
+		        include( realpath('../') . DS . $pluginsdir. DS . $p );
+	        }
+            
         }
 
     }
