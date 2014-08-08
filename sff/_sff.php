@@ -60,6 +60,7 @@ function load_file( $filename, $filesdir, $config, $override = false )
     }
     else
     {
+        header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found"); 
         $filename = $site['error'] . '.' . EXT;
         $filepath = PUBPATH . DS . $filesdir . DS . $filename;
         
@@ -106,16 +107,19 @@ function render( $file, $config )
 ****************************/
 function load_plugins( $plugins, $pluginsdir, $exclude = array() )
 {
+    
+    $exclude_defaults = array('.', './');
+    $exclude = array_merge($exclude_defaults, $exclude);
+    
     foreach($plugins as $p)
-    {
-	    
+    {        
         if( ! in_array($p, $exclude) AND ! is_dir( realpath('./'.$pluginsdir.DS).DS.$p ) AND ! in_array( $exclude ) )
         {
-	        if( file_exists( realpath('../') . DS . $pluginsdir. DS . $p ) )
-	        {
-		        include( realpath('../') . DS . $pluginsdir. DS . $p );
-	        }
-            
+            if( file_exists( realpath('../') . DS . $pluginsdir. DS . $p ) )
+            {
+                    include( realpath('../') . DS . $pluginsdir. DS . $p );
+            }
+
         }
 
     }
@@ -145,7 +149,7 @@ function dir_list( $dir, $private = true, $recursive = true, $exclude = array() 
 	return array_merge(array(), $dir);
 }
 
-function get_config_item($item, $config, $key = '')
+function get_config_item($item, $key = '', $config)
 {
     if( ! empty( $key ) )
     {

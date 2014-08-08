@@ -68,7 +68,7 @@ function _boot( $homepage, $appdir, $pluginsdir, $configdir, $filesdir, $errorpa
     //determine files and params
     $url = explode( "/", ltrim(rtrim(filter_input(INPUT_SERVER, 'REQUEST_URI'), "/"), "/") );
     $url = array_merge(array(), $url);
-
+    $page = $url[0];
     $file = ( empty( $url[0] ) ) ? $homepage : $url[0];
     unset( $url[0] );
     
@@ -79,7 +79,7 @@ function _boot( $homepage, $appdir, $pluginsdir, $configdir, $filesdir, $errorpa
     $params = build_params( array_merge( array(), $url ) );
     
     //load_confgs
-    $config = dir_list( APPPATH . DS . $configdir );
+    dir_list( APPPATH . DS . $configdir );
 
     foreach( $config as $c )
     {
@@ -89,10 +89,8 @@ function _boot( $homepage, $appdir, $pluginsdir, $configdir, $filesdir, $errorpa
         
     }
     
-    
-    //load_plugins
-    load_plugins( dir_list( APPPATH . DS . $pluginsdir ), $pluginsdir );
-    
+    //build site configuration defaults
+    $config['site']['page'] = $page;
     $config['site']['file'] = $file;
     $config['site']['params'] = $params;
     $config['site']['configdir'] = $configdir;
@@ -100,6 +98,20 @@ function _boot( $homepage, $appdir, $pluginsdir, $configdir, $filesdir, $errorpa
     $config['site']['filesdir'] = $filesdir;
     $config['site']['appdir'] = $appdir;
     $config['site']['error'] = $errorpage;
+    
+    //default list of excludes based on supported packages
+    $config['default_exclude'] = array(
+                                'composer.phar',
+                                'composer.lock',
+                                'composer.json'                                
+                                );
+    
+    //build plugin excludes
+    $excludes = (array_key_exists('exclude', $config)) ? $config['exclude'] : array();
+    $config['exclude'] = array_merge($config['default_exclude'], $excludes);
+    
+    //load_plugins
+    load_plugins( dir_list( APPPATH . DS . $pluginsdir ), $pluginsdir, $config['exclude'] );
 
     return $config;
     
